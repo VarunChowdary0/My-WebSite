@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link rel="stylesheet" href="../static/css/signup.css">
+</head>
+<body>
+   <div class="signup">
+            <div class="DataTake">
+                
+                <form action="http://127.0.0.1:2000/userDataProcess" method="post">
+                    <input type="text"  required placeholder="First Name" name="firstname" class="fname">
+                    <input type="text"required placeholder="Last Name" name="lastname" class="lname">
+                    <input type="tel" required placeholder="Phone Number" name="phoneNumber" class="phno">
+                    <input type="email" required placeholder="Email" name="email" class="mail">
+                    <input type="date" class="dob" placeholder="Date Of Birth" name="dob" required>
+                    <select class="selector" name="Profession" id="Profession" name="profession" class="Profession" required >
+                        <option value="">Qualification</option>
+                        <option value="High school">High school</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="B.tech">B.tech</option>
+                        <option value="M.tech">M.tech</option>
+                        <option value="Job">Job</option>
+                        <option value="prefer not to say">prefer not to say</option>
+                    </select>
+                    <input type="text" required placeholder="USERNAME" class="newUserName" name="USERNAME" name="usrnme">
+                    <input type="password" required placeholder="PASSWORD" class="newPassword"name="PASSWORD" name="paswd">
+                    <button onclick="readData()" class="sendData">Done</button>
+                </form>
+                
+            </div>
+   </div>
+
+   <script src="../static/js/page.js"></script>
+</body>
+</html>

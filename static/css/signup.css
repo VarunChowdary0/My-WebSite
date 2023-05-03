@@ -1,0 +1,85 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    color: #fdf4fd;
+    background-color: #111111;
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    min-width: 300px;
+    padding: 20px;
+}
+.signup{
+    border: 1px solid #403141; 
+    padding: 30px;
+    border-radius: 20px;
+    gap: 0px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;  
+    position: relative;
+}
+hr{
+    width: 90%;
+    border: 0.1px solid #f5c7f7;
+    margin-top: -30px;
+}
+
+.reveal{
+    margin-top: -10px;
+    position: relative;
+    height: fit-content;
+}
+.dob{
+    width: fit-content;
+    margin-left: 10px;
+}
+.DataTake{
+    height:280px;
+    margin-bottom: 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.sendData{
+    width: 70px;
+    height: 40px;
+    position: absolute;
+    bottom: -50px;
+    left: 180px;
+    border-radius: 10px;
+    border: 0;
+    background-color: rgb(183, 183, 242);
+    color: white;
+    font-weight: 600;
+}
+.sendData:active{
+    opacity: 0.7;
+}
+.toAPI{
+    width: 70px;
+    margin-left: 180px;
+    margin-top: 20px;
+    height: 40px;
+}
+input{
+    width: 250px;
+    height: 30px;
+    border-radius: 8px;
+    border: 0;
+    padding-left: 10px;
+    transition: all 0.2s;
+}
+.selector{
+    width: 100px;
+    border: 0;
+    border-radius: 8px;
+    height: 27px;
+    margin-left: 10px;
+}
+input:hover{
+    font-size: 18px;
+}
