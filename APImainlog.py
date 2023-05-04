@@ -37,10 +37,10 @@ def process():
     collection=connectToDB.connect()
     collection.insert_one(DataFormat)
     print(DataFormat)
-    return render_template('signIN.html')
+    return render_template('signIN.html',flash="",apilink='http://127.0.0.1:2000/verify')
 @app.route('/signin')
 def signin():
-    return render_template("signIN.html")
+    return render_template("signIN.html",flash="",apilink='http://127.0.0.1:2000/verify')
 @app.route('/home')
 def home():
     return render_template("home.html")
@@ -65,6 +65,6 @@ def verification():
                 return render_template("home.html")
             else:
                 return 'Wrong pW'
-        return "Invalide Ceredentials"
+        return render_template("signIN.html",flash="INVALIED CREDENTIALS")
 if __name__=='__main__':
     app.run(debug=True,port=2000)

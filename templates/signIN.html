@@ -11,12 +11,16 @@
 
     <div class="signup">
 
-        <form action="http://127.0.0.1:2000/verify" method="post">
+        <form action={{apilink}} method="post">
             <input type="text" required placeholder="USERNAME" class="newUserName" name="usrnme">
             <input type="password" required placeholder="PASSWORD" class="newPassword" name="pswd">
             <input  type="submit" class="toAPI">
-            </form>
+        </form>
+        <p class="flasher"></p>
     </div>
     <script src="../static/js/page.js"></script>
+    <script>
+        document.querySelector(".flasher").innerHTML="{{flash}}";
+    </script>
 </body>
 </html>
