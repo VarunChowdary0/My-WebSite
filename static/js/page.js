@@ -76,6 +76,5 @@ function verifyUser(){
    })
    .catch(error=>{
     console.log("fetch error",error)
-   })
-    
+   }) 
 }

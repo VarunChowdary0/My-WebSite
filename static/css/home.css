@@ -24,6 +24,21 @@ a{
     flex-direction: row;
     gap: 25px;
     height: 50px;
+    position: relative;
+}
+.profile{
+    position: absolute;
+    top: 100%;
+    right: 5px;
+    
+}
+.profile a{
+    color: #f5c7f7;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.profile a:hover{
+    text-decoration: underline;
 }
 .nav_left{
     display: flex;

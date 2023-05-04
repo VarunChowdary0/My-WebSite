@@ -1,12 +1,28 @@
 from flask import Flask,render_template,jsonify,request
 from flask_cors import CORS
 from pymongo import MongoClient
+from bson import json_util
+import json
 class connectToDB:
     def connect():
         client=MongoClient('mongodb://localhost:27017')
         db=client['teamXdataBase']
         collection=db['userData']
         return collection
+userFindDict={}
+userInfo={}
+class UserData():
+    def __init__(self) -> None:
+        pass
+    def info():
+        collection=connectToDB.connect()
+        dataInfo=collection.find()
+        return dataInfo
+    def userIndvidulaInfo():
+        collection=connectToDB.connect()
+        dataMy=(collection.find_one(userFindDict))
+        return dataMy
+
 app=Flask("MyAPI")
 CORS(app)
 @app.route('/')
@@ -37,15 +53,16 @@ def process():
     collection=connectToDB.connect()
     collection.insert_one(DataFormat)
     print(DataFormat)
-    return render_template('signIN.html',flash="",apilink='http://127.0.0.1:2000/verify')
+    return render_template('signIN.html',flash="")
 @app.route('/signin')
 def signin():
-    return render_template("signIN.html",flash="",apilink='http://127.0.0.1:2000/verify')
+    return render_template("signIN.html",flash="")
 @app.route('/home')
 def home():
-    return render_template("home.html")
+    return render_template("home.html",nameOfUser='GUEST')
 @app.route('/verify',methods=['POST','GET'])
 def verification():
+    global userFindDict
     collection=connectToDB.connect()
     chkUsrNme=request.form["usrnme"]
     chkPswd=request.form["pswd"]
@@ -59,12 +76,48 @@ def verification():
             if i is None:
                 return 'Invalied'
             else:
-                userDataReq=i   
-            print(userDataReq)
+                userDataReq=i
+            #print("info",userInfo)
+            #print('DBres',userDataReq)
             if userDataReq["password"]==verfyDict["password"]:
-                return render_template("home.html")
+                userFindDict=verfyDict
+                print(userFindDict)
+                print("userFindDict",userFindDict)
+                user_=UserData.userIndvidulaInfo()
+                user=user_['FirstName']+' '+user_['LastName']
+                return render_template("home.html",nameOfUser=user)
             else:
                 return 'Wrong pW'
         return render_template("signIN.html",flash="INVALIED CREDENTIALS")
+@app.route('/accessUserData/<username>/<password>')
+def access(username,password):
+    if username=='admin_getMe*' and password =='access><varun':
+        data = UserData.info()
+        user_data = [json.loads(json_util.dumps(doc)) for doc in data]
+        print(user_data)
+        return jsonify(user_data)
+    else:
+        return 'NO ACCESS'
+#function to debug
+@app.route('/wowow')
+def woow():
+    print(UserData.userIndvidulaInfo())
+    print(userFindDict)
+    user=UserData.userIndvidulaInfo()
+    print('user_->', user['FirstName']+user['LastName'])
+    return 'Done'
+
+
+@app.route('/logout')
+def logger():
+    logout()
+    return render_template('choose.html')
+#function to logout
+def logout():
+    global userFindDict,userInfo,user
+    user=''
+    userFindDict={}
+    userInfo={}
+    return userFindDict,userInfo
 if __name__=='__main__':
-    app.run(debug=True,port=2000)
+    app.run(debug=True,port=2000,host=0.0)

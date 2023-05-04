@@ -4,10 +4,16 @@ body{
     color: #fdf4fd;
     background-color: #111111;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    gap: 30px;
     margin-top: 10%;
     min-width: 300px;
     padding: 20px;
+}
+.msg{
+    font-size: 40px;
 }
 .signup{
     border: 1px solid #403141; 
@@ -23,7 +29,7 @@ body{
 form{
     display: flex;
     flex-direction: column;
-    gap: 10px;  
+    gap: 18px;  
     position: relative;
 }
 hr{
@@ -42,7 +48,7 @@ hr{
     margin-left: 10px;
 }
 .DataTake{
-    height:280px;
+    height:400px;
     margin-bottom: 40px;
     position: relative;
     display: flex;
@@ -53,7 +59,7 @@ hr{
     width: 70px;
     height: 40px;
     position: absolute;
-    bottom: -50px;
+    bottom: -80px;
     left: 180px;
     border-radius: 10px;
     border: 0;
@@ -72,8 +78,8 @@ hr{
 }
 input{
     width: 250px;
-    height: 30px;
-    border-radius: 8px;
+    height: 35px;
+    border-radius: 15px;
     border: 0;
     padding-left: 10px;
     transition: all 0.2s;

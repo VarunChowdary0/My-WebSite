@@ -21,6 +21,10 @@
                 <a class="nav_button" href="">Chat Zone</a>
                 <a class="nav_button" href="">Contact Us</a>
                 <a class="nav_button" href="">Report Bugs</a>
+                <div class="profile">
+                    <a href=""><p class="nameOfUser">GUEST</p></a>
+                    <a class="logout" href="/logout">Log Out</a>
+                </div>
             </div>
         </div>
         <div class="centerer">
@@ -57,5 +61,15 @@
             </div>
         </div>
         <script src="../static/js/page.js"></script>
+        <script>
+            if('{{nameOfUser}}'!=null || '{{nomeOfUser}}'!=''){
+                document.querySelector(".nameOfUser").innerHTML='{{nameOfUser}}';
+                const log_=document.querySelector(".logout").innerHTML;
+                const usrname=document.querySelector(".nameOfUser").innerHTML;
+                if (log_==='Log Out' && usrname==='GUEST'){
+                    document.querySelector(".logout").innerHTML='Log In';
+                }
+            }            
+        </script>
 </body>
 </html>
