@@ -54,16 +54,28 @@ function readData(){
 function verifyUser(){
     const username=document.querySelector(".newUsereName").value;
     const password=document.querySelector(".newPassword").value;
+    console.log(`${window.origin}/verify`)
     const objVarify={
         username:username,
         password:password
     }
-    fetch(`${window.origin}`,{
+    fetch(`${window.origin}/verify`,{
         method:['POST','GET'],
         headers:{
             'content-type':'application/JSON'
         },
         body:JSON.stringify(objVarify)
     })
+   .then(response=>{
+    if(response.ok){
+        window.location.href="home";
+    }
+    else{
+        window.location.href="home";
+    }
+   })
+   .catch(error=>{
+    console.log("fetch error",error)
+   })
     
 }
