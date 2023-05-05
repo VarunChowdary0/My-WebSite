@@ -24,6 +24,29 @@ class UserData():
         collection=connectToDB.connect()
         dataInfo=collection.find()
         return dataInfo
+    def require(key):
+        collection=connectToDB.connect()
+        dataMy=(collection.find_one(userFindDict))
+        if key =='username':
+            return dataMy['username']
+        elif key=='FirstName':
+            return dataMy['FirstName']
+        elif key=='LastName':
+            return dataMy['LastName']
+        elif key=='PhoneNumber':
+            return dataMy['PhoneNumber']
+        elif key=='Email':
+            return dataMy['Email']
+        elif key=='DOB':
+            return dataMy['DOB']
+        elif key=='Profession':
+            return dataMy['Profession']
+        elif key=='pampi':
+            return dataMy['password']
+        elif key=='password':
+            return 'Not Found'
+        else:
+            return False
     def userIndvidulaInfo():
         collection=connectToDB.connect()
         dataMy=(collection.find_one(userFindDict))
@@ -91,8 +114,9 @@ def verification():
                 userFindDict=verfyDict
                 print(userFindDict)
                 print("userFindDict",userFindDict)
-                user_=UserData.userIndvidulaInfo()
-                user=user_['FirstName']+' '+user_['LastName']
+                firstname=UserData.require('FirstName')
+                lastname=UserData.require('LastName')
+                user=firstname+' '+lastname
                 return render_template("home.html",nameOfUser=user)
             else:
                 return 'Wrong pW'
@@ -110,9 +134,12 @@ def access(username,password):
 @app.route('/wowow')
 def woow():
     print(UserData.userIndvidulaInfo())
-    print(userFindDict)
+    #print(userFindDict)
     user=UserData.userIndvidulaInfo()
-    print('user_->', user['FirstName']+user['LastName'])
+    #print('user_->', user['FirstName']+user['LastName'])
+    getit=input("Enter req: ")
+    name=UserData.require(getit)
+    print(name)
     return 'Done'
 
 @app.route('/chatZone')
@@ -137,6 +164,8 @@ def logger():
 #function to logout
 def logout():
     global userFindDict,userInfo,user
+    global signedin
+    signedin=False
     user=''
     userFindDict={}
     userInfo={}
