@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Zone</title>
+    <link rel="stylesheet" href="../static/css/chatBox.css">
+</head>
+<body>
+    <div class="top_chatpg">
+        <p class="title_pg">Chat Zone</p>
+    </div>
+    <div class="messages">
+        <div class="others_msg">
+            <div class="nameOfUser_">Other</div>
+            <div class="msg_of_other">The opposite color pair of lavender on the traditional color wheel is yellow-green. To find the opposite color pair of a color, you can use a color wheel or a tool that generates color schemes.</div>
+            <p class="time">4:07Am</p>
+        </div>
+        <div class="my_msg">
+            <div class="myName_">Varun</div>
+            <div class="msg_of_mine">Note that the specific shade of yellow-green may vary depending on the tool and the color model used (such as RGB or HSL), but the opposite color pair will always be a shade of yellow-green</div>
+            <p class="time">9:59Am</p>
+        </div>    
+    </div>
+    <div class="Add_msg">
+        <div class="innerDec">
+            <input placeholder="What's on your mind ?" type="text" name="newMessage" class="newMessage" >
+            <button class="send"><img src="../static/images/send.png" alt=""></button>
+        </div>
+    </div>
+    <script>
+        window.onload=function(){
+           let animate_=document.querySelector(".top_chatpg");
+           animate_.style.borderBottomLeftRadius= "100px";
+           animate_.style.borderBottomRightRadius= "100px";
+        }
+    </script>
+    <script src="../static/js/page.js"></script>
+</body>
+</html>

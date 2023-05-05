@@ -107,6 +107,9 @@ def woow():
     print('user_->', user['FirstName']+user['LastName'])
     return 'Done'
 
+@app.route('/chatZone')
+def chatPage():
+    return render_template("publicChat.html")
 
 @app.route('/logout')
 def logger():
