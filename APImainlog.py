@@ -9,8 +9,14 @@ class connectToDB:
         db=client['teamXdataBase']
         collection=db['userData']
         return collection
+    def chatDB():
+        client=MongoClient('mongodb://localhost:27017')
+        db=client['teamXdataBase']
+        collection=db['chatINFO']
+        return collection
 userFindDict={}
 userInfo={}
+signedin=False
 class UserData():
     def __init__(self) -> None:
         pass
@@ -80,6 +86,8 @@ def verification():
             #print("info",userInfo)
             #print('DBres',userDataReq)
             if userDataReq["password"]==verfyDict["password"]:
+                global signedin
+                signedin=True
                 userFindDict=verfyDict
                 print(userFindDict)
                 print("userFindDict",userFindDict)
@@ -110,7 +118,18 @@ def woow():
 @app.route('/chatZone')
 def chatPage():
     return render_template("publicChat.html")
-
+@app.route('/chatAPI',methods=['POST','GET'])
+def saveThechat():
+    collection=connectToDB.chatDB()
+    chatData=request.get_json()
+    getUsername=UserData.userIndvidulaInfo()
+    username=getUsername['username']
+    chatData['username']=username
+    collection.insert_one(chatData)
+    print(chatData)
+    response=jsonify()
+    response.status_code=200
+    return response
 @app.route('/logout')
 def logger():
     logout()

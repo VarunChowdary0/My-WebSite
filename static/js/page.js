@@ -51,30 +51,54 @@ function readData(){
     }
 }
 
-function verifyUser(){
-    const username=document.querySelector(".newUsereName").value;
-    const password=document.querySelector(".newPassword").value;
-    console.log(`${window.origin}/verify`)
-    const objVarify={
-        username:username,
-        password:password
+
+//--------------ChatBox--------------------
+const chatObj=[]
+const messageInfo={
+    MyMessage:'',
+    time:'',
+    date:''
+}
+window.onload= function giveChat(){
+    if(window.location.pathname=='/chatZone'){
+        let animate_=document.querySelector(".top_chatpg");
+        animate_.style.borderBottomLeftRadius= "100px";
+        animate_.style.borderBottomRightRadius= "100px";
+        console.log("kaboom !!");
+        validateData();
     }
-    fetch(`${window.origin}/verify`,{
-        method:['POST','GET'],
+}
+function opp(){
+    const newMessage=document.querySelector(".newMessage").value;
+    if(newMessage.length>=2){
+        const date= new Date();
+    const strDate=date.toLocaleDateString();
+    const strTime=date.toLocaleTimeString();
+    messageInfo.MyMessage=newMessage;
+    messageInfo.date=strDate;
+    messageInfo.time=strTime;
+    console.log(messageInfo);
+    document.querySelector(".newMessage").value='';
+    fetch(`${window.origin}/chatAPI`,{
+        method:'POST',
         headers:{
-            'content-type':'application/JSON'
+            'Content-type':'application/JSON'
         },
-        body:JSON.stringify(objVarify)
+        body:JSON.stringify(messageInfo)
     })
-   .then(response=>{
-    if(response.ok){
-        window.location.href="home";
+    .then(response=>{
+        if(response.ok){
+            console.log("Success");
+        }
+        else{
+            console.log("failed");
+        }
+    })
+    .catch(error=>{
+        console.log("fetch error:",error);
+    })
     }
-    else{
-        window.location.href="home";
-    }
-   })
-   .catch(error=>{
-    console.log("fetch error",error)
-   }) 
+}
+function validateData(){
+   // show the chat on page
 }

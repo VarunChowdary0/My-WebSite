@@ -3,6 +3,7 @@ body{
     color: #fdf4fd;
     min-width: 320px;
     margin-top: 100px;
+    margin-bottom: 100px;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
@@ -31,7 +32,7 @@ body{
 }
 .Add_msg{
     position: fixed;
-    background-color: #a390f567;
+    background-color: #a390f5e9;
     z-index: 100;
     bottom: 0;
     left: 0;
@@ -65,7 +66,7 @@ body{
     margin-top: 50px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 30px;
     position: relative;
 }
 .others_msg,.my_msg{
@@ -79,8 +80,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-right: 5px;
-    padding-left: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
     padding-top: 15px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -116,11 +117,20 @@ body{
     background-color: #B3D53E;
     color:  #550593;
 }
+.msg_of_other{
+    padding-right: 3px;
+}
 .my_msg{
-    margin-left: 20%;
+    margin-left: 60%;
 }
 .others_msg{
-    margin-right: 20%;
+    margin-right: 60%;
+    margin-top:20px;
+}
+.time{
+    margin: 0;
+    margin-top: 5px;
+    margin-left: 10px;
 }
 .send{
     background-color: #11111100;
@@ -131,7 +141,16 @@ body{
 .send img{
     width: 100%;
 }
-
+body::-webkit-scrollbar{
+    width: 8px;
+}
+body::-webkit-scrollbar-thumb{
+    background-color: #f7e6ff;
+    border-radius: 20px;
+}
+body::-webkit-scrollbar-track{
+    background-color: #26252c;
+}
 @keyframes welcome{
     0%{
         transform: translateY(-100px);
@@ -148,5 +167,14 @@ body{
     .innerDec{
         width: 80%;
     }
-    
+    .others_msg{
+        margin-right: 20%;
+    }
+    .my_msg{
+        margin-left: 20%;
+    }
+    .nameOfUser_,.myName_{
+        padding-right: 5px;
+        padding-left: 5px;
+    }
 }
