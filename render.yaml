@@ -1,2 +1,2 @@
-buildCommand: python3.11.2 -m pip install -r requirements.txt
-startCommand: python3.11.2 app.py
+buildCommand: python3.8 -m pip install -r requirements.txt
+startCommand: python3.8 APImainlog.py
