@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="../static/css/signup.css">
 </head>
 <body>
-
+    <div class="headTxt">Sign In</div>
     <div class="signup">
-
+        
         <form action="http://127.0.0.1:2000/verify" method="post">
             <input type="text" required placeholder="USERNAME" class="newUserName" name="usrnme">
             <input type="password" required placeholder="PASSWORD" class="newPassword" name="pswd">
-            <input  type="submit" class="toAPI">
+            <input onclick="GetUsername()"  type="submit" class="toAPI">
         </form>
         <p class="flasher"></p>
     </div>

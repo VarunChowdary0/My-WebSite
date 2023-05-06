@@ -157,10 +157,27 @@ def saveThechat():
     response=jsonify()
     response.status_code=200
     return response
+@app.route('/GetChatArr',methods=['GET'])
+def GetChatArr():
+    collection=connectToDB.chatDB()
+    chatList=[]
+    for chat in collection.find():
+        chatList.append(chat)
+    print(chatList)
+    return json_util.dumps(chatList)
+
+@app.route('/GetUsername')
+def GetUsername():
+    name=UserData.require('username')
+    return json_util.dumps(name)
+
 @app.route('/logout')
 def logger():
     logout()
     return render_template('choose.html')
+@app.route('/signinStatus')
+def signinStatus():
+    return json_util.dumps(signedin)
 #function to logout
 def logout():
     global userFindDict,userInfo,user

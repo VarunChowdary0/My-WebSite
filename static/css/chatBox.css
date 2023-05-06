@@ -93,7 +93,7 @@ body{
     top: -30px;
 }
 .myName_{
-    top: -35px;
+    top: -30px;
     right: 0;
     background-color:#B3D53E;
     color: #51a813;
@@ -176,5 +176,9 @@ body::-webkit-scrollbar-track{
     .nameOfUser_,.myName_{
         padding-right: 5px;
         padding-left: 5px;
+        font-size: 17px;
+    }
+    .top_chatpg{
+        height: 70px;
     }
 }

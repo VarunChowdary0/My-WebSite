@@ -73,6 +73,9 @@ a{
     margin-top: 60px;
     position: relative;
 }
+.profile{
+    font-size: 1px;
+}
 .title{
     font-size:60px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -289,6 +292,9 @@ body::-webkit-scrollbar-track{
     }
     .auther_info{
         margin-left: 0px;
+    }
+    .profile a{
+        font-size: 10px;
     }
     .c10{
         width: 200px;

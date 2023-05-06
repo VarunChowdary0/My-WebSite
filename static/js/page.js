@@ -5,7 +5,6 @@ function learn(){
     <button onclick="BackEnd()" class="start BackEnd"> learn Back End</button>
     <hr class="second">`;
 }
-
 function FrontEnd(){
     const change=document.querySelector(".done_it").innerHTML='';
     const change_1=document.querySelector(".roadmap").innerHTML=`
@@ -53,21 +52,88 @@ function readData(){
 
 
 //--------------ChatBox--------------------
-const chatObj=[]
 const messageInfo={
     MyMessage:'',
     time:'',
     date:''
 }
-window.onload= function giveChat(){
+let username='';
+let chatDataArr = [];
+function GetUsername(){
+    if(window.location.pathname=='/signin')
+    {
+        const username=document.querySelector(".newUserName").value;
+        console.log(username)
+    }
+    return username
+}
+/*
+function validateData() {
+    // show the chat on page
+    username="uuuuuu";
+   fetch('/GetChatArr')
+      .then(response => response.json())
+      .then(data => {
+        chatDataArr=data;
+
+      })
+  }
+  */
+ window.onload=function pageload(){
     if(window.location.pathname=='/chatZone'){
         let animate_=document.querySelector(".top_chatpg");
         animate_.style.borderBottomLeftRadius= "100px";
         animate_.style.borderBottomRightRadius= "100px";
         console.log("kaboom !!");
-        validateData();
+        giveChat();
     }
-}
+ }
+ function giveChat(){
+    globalThis.giveChat = giveChat;
+    window.giveChat = giveChat;
+    if(window.location.pathname=='/chatZone'){
+
+        username=fetch('/GetUsername')
+            .then(response=>response.json())
+            .then(data=>{
+                username=data
+                return data
+            })
+        fetch('/GetChatArr')
+        .then(response => response.json())
+        .then(data => {
+            chatDataArr=data;
+            console.log(chatDataArr)
+                    /* main chat code */
+            messageBOX=document.querySelector(".messages");
+            for(i=0;i<chatDataArr.length;i++)
+            {
+                if(chatDataArr[i]['username']===username)
+                {
+                    messageBOX.innerHTML+=`
+                    <div class="my_msg">
+                    <div class="myName_">${username}</div>
+                    <div class="msg_of_mine">${chatDataArr[i]['MyMessage']}</div>
+                    <p class="time">${chatDataArr[i]['time']}</p>
+                    </div>
+                    `;
+                    console.log(`name:${username},message:${chatDataArr[i]['MyMessage']},time:${chatDataArr[i]['time']}`)
+                }
+                else{
+                    messageBOX.innerHTML+=`
+                    <div class="others_msg">
+                    <div class="nameOfUser_">${chatDataArr[i]['username']}</div>
+                    <div class="msg_of_other">${chatDataArr[i]['MyMessage']}</div>
+                    <p class="time">${chatDataArr[i]['time']}</p>
+                    </div>
+                    `;
+                }
+            }
+    
+        })
+}}
+
+
 function opp(){
     const newMessage=document.querySelector(".newMessage").value;
     if(newMessage.length>=2){
@@ -88,7 +154,7 @@ function opp(){
     })
     .then(response=>{
         if(response.ok){
-            console.log("Success");
+            giveChat();
         }
         else{
             console.log("failed");
@@ -98,7 +164,4 @@ function opp(){
         console.log("fetch error:",error);
     })
     }
-}
-function validateData(){
-   // show the chat on page
-}
+} 

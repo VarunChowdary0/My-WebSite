@@ -45,10 +45,10 @@ body{
     }
 @media screen and (max-width:350px) {
     body{
-        height: 670px;
+        height: 650px;
     }
     .box{
-        padding: 20px;
+        padding: 40px 20px;
     }
 }
 }

@@ -1,7 +1,7 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
-    color: #fdf4fd;
+    color: #f7d2f7;
     background-color: #111111;
     display: flex;
     flex-direction: column;
@@ -12,11 +12,14 @@ body{
     min-width: 300px;
     padding: 20px;
 }
+.headTxt{
+    font-size: 2rem
+}
 .msg{
     font-size: 40px;
 }
 .signup{
-    border: 1px solid #403141; 
+    border: 1px solid #40314e; 
     padding: 30px;
     border-radius: 20px;
     gap: 0px;
@@ -81,7 +84,7 @@ input{
     height: 35px;
     border-radius: 15px;
     border: 0;
-    padding-left: 10px;
+    padding-left: 15px;
     transition: all 0.2s;
 }
 .selector{
@@ -93,4 +96,9 @@ input{
 }
 input:hover{
     font-size: 18px;
+}
+@media screen and (max-width:500px){
+    .msg{
+        font-size: 30px
+    }
 }
