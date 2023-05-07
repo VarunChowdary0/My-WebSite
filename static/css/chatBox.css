@@ -67,6 +67,7 @@ body{
     display: flex;
     flex-direction: column;
     gap: 30px;
+    overflow: auto;
     position: relative;
 }
 .others_msg,.my_msg{

@@ -81,7 +81,7 @@ function validateData() {
  window.onload=function pageload(){
     if(window.location.pathname=='/chatZone'){
         usernamE = localStorage.getItem("username");
-        document.querySelector(".usersName").innerHTML=username;
+        document.querySelector(".usersName").innerHTML=usernamE;
         let animate_=document.querySelector(".top_chatpg");
         animate_.style.borderBottomLeftRadius= "100px";
         animate_.style.borderBottomRightRadius= "100px";
@@ -92,6 +92,7 @@ function validateData() {
  }
  function giveChat(){
     let refr=document.querySelector(".messages");
+    //refr.scrollTop = div.scrollHeight;
     refr.innerHTML='';
     globalThis.giveChat = giveChat;
     window.giveChat = giveChat;
