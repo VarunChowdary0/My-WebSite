@@ -2,15 +2,21 @@ from flask import Flask,render_template,jsonify,request
 from flask_cors import CORS
 from pymongo import MongoClient
 from bson import json_util
+from bson import ObjectId
 import json
+from urllib.parse import quote_plus
+from pymongo.server_api import ServerApi
 class connectToDB:
     def connect():
-        client=MongoClient('mongodb://localhost:27017')
+        client = MongoClient("mongodb+srv://user_Application:application@cluster0.epypnho.mongodb.net/?retryWrites=true&w=majority")
+        db = client['teamXdataBase']
         db=client['teamXdataBase']
         collection=db['userData']
         return collection
     def chatDB():
-        client=MongoClient('mongodb://localhost:27017')
+
+        client = MongoClient("mongodb+srv://user_Application:application@cluster0.epypnho.mongodb.net/?retryWrites=true&w=majority")
+        db = client['teamXdataBase']
         db=client['teamXdataBase']
         collection=db['chatINFO']
         return collection
@@ -79,6 +85,7 @@ def process():
     DataFormat["Profession"]=prof
     DataFormat["username"]=usrnme
     DataFormat['password']=pswd
+    DataFormat['_id']=ObjectId()
     collection=connectToDB.connect()
     collection.insert_one(DataFormat)
     print(DataFormat)
@@ -150,6 +157,7 @@ def saveThechat():
     collection=connectToDB.chatDB()
     chatData=request.get_json()
     getUsername=UserData.userIndvidulaInfo()
+    chatData['_Id']=ObjectId()
     username=getUsername['username']
     chatData['username']=username
     collection.insert_one(chatData)
