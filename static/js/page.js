@@ -118,7 +118,7 @@ function validateData() {
                 {
                     messageBOX.innerHTML+=`
                     <div class="my_msg">
-                    <div class="myName_">${username}</div>
+                    <div class="myName_">${usernamE}</div>
                     <div class="msg_of_mine">${chatDataArr[i]['MyMessage']}</div>
                     <p class="time">${chatDataArr[i]['time']}</p>
                     </div>
