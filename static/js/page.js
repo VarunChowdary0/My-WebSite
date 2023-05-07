@@ -165,3 +165,9 @@ function opp(){
     })
     }
 } 
+function keepMeLogged(){
+
+}
+if(window.location.pathname=='/chatZone'){
+    setInterval(GetUsername,1);
+}

@@ -88,7 +88,7 @@ def process():
     DataFormat['_id']=ObjectId()
     collection=connectToDB.connect()
     collection.insert_one(DataFormat)
-    print(DataFormat)
+    #print(DataFormat)
     return render_template('signIN.html',flash="")
 @app.route('/signin')
 def signin():
@@ -119,8 +119,8 @@ def verification():
                 global signedin
                 signedin=True
                 userFindDict=verfyDict
-                print(userFindDict)
-                print("userFindDict",userFindDict)
+                #print(userFindDict)
+                #print("userFindDict",userFindDict)
                 firstname=UserData.require('FirstName')
                 lastname=UserData.require('LastName')
                 user=firstname+' '+lastname
@@ -133,20 +133,20 @@ def access(username,password):
     if username=='admin_getMe*' and password =='access><varun':
         data = UserData.info()
         user_data = [json.loads(json_util.dumps(doc)) for doc in data]
-        print(user_data)
+        #print(user_data)
         return jsonify(user_data)
     else:
         return 'NO ACCESS'
 #function to debug
 @app.route('/wowow')
 def woow():
-    print(UserData.userIndvidulaInfo())
+    #print(UserData.userIndvidulaInfo())
     #print(userFindDict)
     user=UserData.userIndvidulaInfo()
     #print('user_->', user['FirstName']+user['LastName'])
     getit=input("Enter req: ")
     name=UserData.require(getit)
-    print(name)
+   # print(name)
     return 'Done'
 
 @app.route('/chatZone')
@@ -161,7 +161,7 @@ def saveThechat():
     username=getUsername['username']
     chatData['username']=username
     collection.insert_one(chatData)
-    print(chatData)
+    #print(chatData)
     response=jsonify()
     response.status_code=200
     return response
@@ -171,7 +171,7 @@ def GetChatArr():
     chatList=[]
     for chat in collection.find():
         chatList.append(chat)
-    print(chatList)
+    #print(chatList)
     return json_util.dumps(chatList)
 
 @app.route('/GetUsername')
