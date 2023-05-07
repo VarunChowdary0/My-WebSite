@@ -109,7 +109,7 @@ function validateData() {
             chatDataArr=data;
             console.log(chatDataArr)
             console.log("n_:",usernamE)
-                    /* main chat code */
+                    /* main chat code */          
             messageBOX=document.querySelector(".messages");
                                                                     //const usersName=document.querySelector(".usersName").innerHTML=`${username}`;
             for(i=0;i<chatDataArr.length;i++)
@@ -135,9 +135,9 @@ function validateData() {
                     `;
                 }
             }
-    
+
         })
-}}
+}}    
 
 function opp(){
     
