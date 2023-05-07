@@ -53,7 +53,7 @@ function readData(){
 let usernamE;
 function GetUsername(){
     const kaboom=document.querySelector(".newUserName");
-    username=kaboom.value;
+    usernamE=kaboom.value;
     localStorage.setItem("username", usernamE);
 }
 
