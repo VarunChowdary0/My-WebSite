@@ -159,7 +159,6 @@ def saveThechat():
     getUsername=UserData.userIndvidulaInfo()
     chatData['_Id']=ObjectId()
     username=getUsername['username']
-    chatData['username']=username
     collection.insert_one(chatData)
     #print(chatData)
     response=jsonify()
