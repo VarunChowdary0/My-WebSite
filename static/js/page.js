@@ -54,6 +54,7 @@ let username;
 function GetUsername(){
     const kaboom=document.querySelector(".newUserName");
     username=kaboom.value;
+    localStorage.setItem("username", username);
 }
 
 
@@ -78,6 +79,7 @@ function validateData() {
   */
  window.onload=function pageload(){
     if(window.location.pathname=='/chatZone'){
+        username = localStorage.getItem("username");
         document.querySelector(".usersName").innerHTML=username;
         let animate_=document.querySelector(".top_chatpg");
         animate_.style.borderBottomLeftRadius= "100px";
@@ -167,7 +169,11 @@ function opp(){
         console.log("fetch error:",error);
     })
     }
-                                                                                                } /*
+
+}                                    
+function logOut(){
+    localStorage.removeItem("username");
+}                                            /*
                                                                                                 let name_=document.querySelector(".usersName").innerHTML;
                                                                                                 function keepMeLogged(){
                                                                                                     while(name_===null){
