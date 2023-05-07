@@ -108,7 +108,7 @@ function validateData() {
         .then(data => {
             chatDataArr=data;
             console.log(chatDataArr)
-            console.log("n_:",username)
+            console.log("n_:",usernamE)
                     /* main chat code */
             messageBOX=document.querySelector(".messages");
                                                                     //const usersName=document.querySelector(".usersName").innerHTML=`${username}`;
