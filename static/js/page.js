@@ -49,6 +49,12 @@ function readData(){
         boom.style.width="0px";
     }
 }
+//---------------------------------save username------------
+let username;
+function GetUsername(){
+    const kaboom=document.querySelector(".newUserName");
+    username=kaboom.value;
+}
 
 
 //--------------ChatBox--------------------
@@ -57,16 +63,7 @@ const messageInfo={
     time:'',
     date:''
 }
-let username='';
 let chatDataArr = [];
-function GetUsername(){
-    if(window.location.pathname=='/signin')
-    {
-        const username=document.querySelector(".newUserName").value;
-        console.log(username)
-    }
-    return username
-}
 /*
 function validateData() {
     // show the chat on page
@@ -81,31 +78,36 @@ function validateData() {
   */
  window.onload=function pageload(){
     if(window.location.pathname=='/chatZone'){
+        document.querySelector(".usersName").innerHTML=username;
         let animate_=document.querySelector(".top_chatpg");
         animate_.style.borderBottomLeftRadius= "100px";
         animate_.style.borderBottomRightRadius= "100px";
         console.log("kaboom !!");
+        console.log("n_0:",username)
         giveChat();
     }
  }
  function giveChat(){
+    let refr=document.querySelector(".messages");
+    refr.innerHTML='';
     globalThis.giveChat = giveChat;
     window.giveChat = giveChat;
     if(window.location.pathname=='/chatZone'){
-
-        username=fetch('/GetUsername')
-            .then(response=>response.json())
-            .then(data=>{
-                username=data
-                return data
-            })
+                                                                /* username=fetch('/GetUsername')
+                                                                        .then(response=>response.json())
+                                                                        .then(data=>{
+                                                                            username=data
+                                                                            return data
+                                                                        }) */
         fetch('/GetChatArr')
         .then(response => response.json())
         .then(data => {
             chatDataArr=data;
             console.log(chatDataArr)
+            console.log("n_:",username)
                     /* main chat code */
             messageBOX=document.querySelector(".messages");
+                                                                    //const usersName=document.querySelector(".usersName").innerHTML=`${username}`;
             for(i=0;i<chatDataArr.length;i++)
             {
                 if(chatDataArr[i]['username']===username)
@@ -117,7 +119,7 @@ function validateData() {
                     <p class="time">${chatDataArr[i]['time']}</p>
                     </div>
                     `;
-                    console.log(`name:${username},message:${chatDataArr[i]['MyMessage']},time:${chatDataArr[i]['time']}`)
+                    //console.log(`name:${username},message:${chatDataArr[i]['MyMessage']},time:${chatDataArr[i]['time']}`)
                 }
                 else{
                     messageBOX.innerHTML+=`
@@ -133,8 +135,8 @@ function validateData() {
         })
 }}
 
-
 function opp(){
+    
     const newMessage=document.querySelector(".newMessage").value;
     if(newMessage.length>=2){
         const date= new Date();
@@ -144,6 +146,7 @@ function opp(){
     messageInfo.date=strDate;
     messageInfo.time=strTime;
     console.log(messageInfo);
+
     document.querySelector(".newMessage").value='';
     fetch(`${window.origin}/chatAPI`,{
         method:'POST',
@@ -164,10 +167,15 @@ function opp(){
         console.log("fetch error:",error);
     })
     }
-} 
-function keepMeLogged(){
+                                                                                                } /*
+                                                                                                let name_=document.querySelector(".usersName").innerHTML;
+                                                                                                function keepMeLogged(){
+                                                                                                    while(name_===null){
+                                                                                                        setInterval(name_=document.querySelector(".usersName").innerHTML,1000);
+                                                                                                    };
+                                                                                                }
 
-}
-if(window.location.pathname=='/chatZone'){
-    setInterval(GetUsername,1);
-}
+                                                                                                if(window.location.pathname=='/chatZone'){
+                                                                                                    setInterval(GetUsername,1);
+                                                                                                }
+                                                                                                */

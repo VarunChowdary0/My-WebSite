@@ -159,6 +159,14 @@ body::-webkit-scrollbar-track{
         transform: translateY(0px);
     }
 }
+.usersName{
+    margin-left: 10%;
+    font-size: 10px;
+    position: absolute;
+    top: 110px;
+    right: 25px;
+    color: #B3D53E;
+}
 
 @media screen and (max-width: 390px) {
     .title_pg{
@@ -180,5 +188,12 @@ body::-webkit-scrollbar-track{
     }
     .top_chatpg{
         height: 70px;
+    }
+    .usersName{
+        margin-left: 10%;
+        font-size: 10px;
+        position: absolute;
+        top: 80px;
+        right: 10px;
     }
 }
