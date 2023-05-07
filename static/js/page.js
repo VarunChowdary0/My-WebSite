@@ -50,11 +50,11 @@ function readData(){
     }
 }
 //---------------------------------save username------------
-let username;
+let usernamE;
 function GetUsername(){
     const kaboom=document.querySelector(".newUserName");
     username=kaboom.value;
-    localStorage.setItem("username", username);
+    localStorage.setItem("username", usernamE);
 }
 
 
@@ -62,7 +62,8 @@ function GetUsername(){
 const messageInfo={
     MyMessage:'',
     time:'',
-    date:''
+    date:'',
+    username:''
 }
 let chatDataArr = [];
 /*
@@ -79,7 +80,7 @@ function validateData() {
   */
  window.onload=function pageload(){
     if(window.location.pathname=='/chatZone'){
-        username = localStorage.getItem("username");
+        usernamE = localStorage.getItem("username");
         document.querySelector(".usersName").innerHTML=username;
         let animate_=document.querySelector(".top_chatpg");
         animate_.style.borderBottomLeftRadius= "100px";
@@ -112,7 +113,7 @@ function validateData() {
                                                                     //const usersName=document.querySelector(".usersName").innerHTML=`${username}`;
             for(i=0;i<chatDataArr.length;i++)
             {
-                if(chatDataArr[i]['username']===username)
+                if(chatDataArr[i]['username']===usernamE)
                 {
                     messageBOX.innerHTML+=`
                     <div class="my_msg">
@@ -142,12 +143,14 @@ function opp(){
     const newMessage=document.querySelector(".newMessage").value;
     if(newMessage.length>=2){
         const date= new Date();
-    const strDate=date.toLocaleDateString();
-    const strTime=date.toLocaleTimeString();
-    messageInfo.MyMessage=newMessage;
-    messageInfo.date=strDate;
-    messageInfo.time=strTime;
-    console.log(messageInfo);
+        const strDate=date.toLocaleDateString();
+        const strTime=date.toLocaleTimeString();
+        usernamE = localStorage.getItem("username");
+        messageInfo.MyMessage=newMessage;
+        messageInfo.date=strDate;
+        messageInfo.time=strTime;
+        messageInfo.username=usernamE;
+        console.log(messageInfo);
 
     document.querySelector(".newMessage").value='';
     fetch(`${window.origin}/chatAPI`,{
