@@ -86,7 +86,7 @@ function validateData() {
         animate_.style.borderBottomLeftRadius= "100px";
         animate_.style.borderBottomRightRadius= "100px";
         console.log("kaboom !!");
-        console.log("n_0:",username)
+        console.log("n_0:",usernamE)
         giveChat();
     }
  }
