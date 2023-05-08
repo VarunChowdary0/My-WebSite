@@ -8,6 +8,12 @@ body{
     display: flex;
     flex-direction: column;
 }
+a {
+    cursor: pointer;
+    text-decoration: none !important;
+    color: inherit;
+} 
+
 .top_chatpg{
     min-width: 250px;
     position: fixed;
@@ -29,6 +35,8 @@ body{
     font-weight: 600;
     color: #fdf4fd;
     animation: welcome 1s 0.2s 1;
+    text-decoration: none; 
+    
 }
 .Add_msg{
     position: fixed;
