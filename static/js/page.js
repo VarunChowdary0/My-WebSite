@@ -87,10 +87,10 @@ function validateData() {
         animate_.style.borderBottomRightRadius= "100px";
         console.log("kaboom !!");
         console.log("n_0:",usernamE)
-        giveChat();
+        giveChat('recent');
     }
  }
- function giveChat(){
+ function giveChat(R){
     let refr=document.querySelector(".messages");
     //refr.scrollTop = div.scrollHeight;
     refr.innerHTML='';
@@ -112,28 +112,56 @@ function validateData() {
                     /* main chat code */          
             messageBOX=document.querySelector(".messages");
                                                                     //const usersName=document.querySelector(".usersName").innerHTML=`${username}`;
-            for(i=0;i<chatDataArr.length;i++)
+            if(R=='recent')
             {
-                if(chatDataArr[i]['username']===usernamE)
-                {
-                    messageBOX.innerHTML+=`
-                    <div class="my_msg">
-                    <div class="myName_">${usernamE}</div>
-                    <div class="msg_of_mine">${chatDataArr[i]['MyMessage']}</div>
-                    <p class="time">${chatDataArr[i]['time']}</p>
-                    </div>
-                    `;
-                    //console.log(`name:${username},message:${chatDataArr[i]['MyMessage']},time:${chatDataArr[i]['time']}`)
-                }
-                else{
-                    messageBOX.innerHTML+=`
-                    <div class="others_msg">
-                    <div class="nameOfUser_">${chatDataArr[i]['username']}</div>
-                    <div class="msg_of_other">${chatDataArr[i]['MyMessage']}</div>
-                    <p class="time">${chatDataArr[i]['time']}</p>
-                    </div>
-                    `;
-                }
+                for(i=(chatDataArr.length-5);i<chatDataArr.length;i++)
+                    {
+                        if(chatDataArr[i]['username']===usernamE)
+                        {
+                            messageBOX.innerHTML+=`
+                            <div class="my_msg">
+                            <div class="myName_">${usernamE}</div>
+                            <div class="msg_of_mine">${chatDataArr[i]['MyMessage']}</div>
+                            <p class="time">${chatDataArr[i]['time']}</p>
+                            </div>
+                            `;
+                            //console.log(`name:${username},message:${chatDataArr[i]['MyMessage']},time:${chatDataArr[i]['time']}`)
+                        }
+                        else{
+                            messageBOX.innerHTML+=`
+                            <div class="others_msg">
+                            <div class="nameOfUser_">${chatDataArr[i]['username']}</div>
+                            <div class="msg_of_other">${chatDataArr[i]['MyMessage']}</div>
+                            <p class="time">${chatDataArr[i]['time']}</p>
+                            </div>
+                            `;
+                        }
+                    }
+            }
+            else if(R=='All'){
+                for(i=0;i<chatDataArr.length;i++)
+                    {
+                        if(chatDataArr[i]['username']===usernamE)
+                        {
+                            messageBOX.innerHTML+=`
+                            <div class="my_msg">
+                            <div class="myName_">${usernamE}</div>
+                            <div class="msg_of_mine">${chatDataArr[i]['MyMessage']}</div>
+                            <p class="time">${chatDataArr[i]['time']}</p>
+                            </div>
+                            `;
+                            //console.log(`name:${username},message:${chatDataArr[i]['MyMessage']},time:${chatDataArr[i]['time']}`)
+                        }
+                        else{
+                            messageBOX.innerHTML+=`
+                            <div class="others_msg">
+                            <div class="nameOfUser_">${chatDataArr[i]['username']}</div>
+                            <div class="msg_of_other">${chatDataArr[i]['MyMessage']}</div>
+                            <p class="time">${chatDataArr[i]['time']}</p>
+                            </div>
+                            `;
+                        }
+                    }
             }
 
         })
@@ -163,7 +191,7 @@ function opp(){
     })
     .then(response=>{
         if(response.ok){
-            giveChat();
+            giveChat('recent');
         }
         else{
             console.log("failed");
