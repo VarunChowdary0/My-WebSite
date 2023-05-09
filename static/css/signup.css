@@ -87,6 +87,10 @@ input{
     padding-left: 15px;
     transition: all 0.2s;
 }
+input:focus{
+    outline: none;
+    border: none;
+}
 .selector{
     width: 100px;
     border: 0;

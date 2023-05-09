@@ -66,6 +66,10 @@ a {
     padding-left: 20px;
     transition: font-size 0.2s;
 }
+.newMessage:focus{
+    outline: none;
+    border: none;
+}
 .newMessage:hover{
     font-size: 16px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;

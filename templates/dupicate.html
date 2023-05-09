@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Existing Info</title>
+    <style>
+        body{
+            background-color: #111111;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fdf4fd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 50px;
+        }
+        .line_1{
+            font-size: 70px;
+            color: #a393eb;
+            margin-top: 100px;
+            animation: bounce 0.15s 0.5s 1;
+        }
+        @keyframes bounce {
+            0%{
+                transform: translateX(20px);
+            }
+            50%{
+                transform: translateX(-10px);
+            }
+            100%{
+                transform: translateX(0px);
+            }
+            
+        }
+        .line_2{
+            font-size: 16px;
+        }
+        .line_3{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            margin-left: 40%;
+            font-style: italic;
+           
+        }
+        a{
+            color: #f5c7f7;
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+        .botm_line{
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            padding: 50px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-style: italic;
+        }
+        @media screen and (max-width:390px) {
+            body{
+                gap: 40px;
+                margin-left: 6%;
+            }
+            .line_1{
+                font-size: 3rem;
+                margin-top: 50px;
+                
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="line_1">
+        Info is already existing .
+    </div>
+    <div class="line_2">
+        The information you have submitted has already been used for sign-up.
+    </div>
+    <div class="line_3">
+        <a href="">Forgot password ?</a>
+    </div>
+    <div class="botm_line">
+        <a href="">Help</a>
+    </div>
+</body>
+</html>

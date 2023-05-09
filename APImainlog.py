@@ -77,19 +77,30 @@ def process():
     prof=request.form["Profession"]
     usrnme=request.form['USERNAME']
     pswd=request.form['PASSWORD']
-    DataFormat["FirstName"]=fname
-    DataFormat["LastName"]=lname
-    DataFormat["PhoneNumber"]=phno
-    DataFormat["Email"]=mail
-    DataFormat["DOB"]=dob
-    DataFormat["Profession"]=prof
-    DataFormat["username"]=usrnme
-    DataFormat['password']=pswd
-    DataFormat['_id']=ObjectId()
-    collection=connectToDB.connect()
-    collection.insert_one(DataFormat)
-    #print(DataFormat)
-    return render_template('signIN.html',flash="")
+    checkDict={}
+    checkDict["PhoneNumber"]=phno
+    checkDict["Email"]=mail
+    checkDict["username"]=usrnme
+    check=connectToDB.connect()
+    res=check.find(checkDict)
+    if(res is None):
+        DataFormat["FirstName"]=fname
+        DataFormat["LastName"]=lname
+        DataFormat["PhoneNumber"]=phno
+        DataFormat["Email"]=mail
+        DataFormat["DOB"]=dob
+        DataFormat["Profession"]=prof
+        DataFormat["username"]=usrnme
+        DataFormat['password']=pswd
+        DataFormat['_id']=ObjectId()
+        collection=connectToDB.connect()
+        collection.insert_one(DataFormat)
+        print("creating")
+        #print(DataFormat)
+        return render_template('signIN.html',flash="")
+    else:
+        print("Already exists")
+        return render_template("dupicate.html")
 @app.route('/signin')
 def signin():
     return render_template("signIN.html",flash="")
