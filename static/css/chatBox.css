@@ -55,8 +55,11 @@ a {
     height: 50px;
     display: flex;
     align-items: center;
+    gap: 20px;
     justify-content: center;
     width: 50%;
+    margin-right: 10px;
+    margin-right: 5px;
 }
 .newMessage{
     height: 37px;
@@ -193,6 +196,12 @@ body::-webkit-scrollbar-track{
 .sync img{
     width: 100%;
 }
+.butons{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    margin-right: 10px;
+}
 
 @media screen and (max-width: 400px) {
     .title_pg{
@@ -200,6 +209,7 @@ body::-webkit-scrollbar-track{
     }
     .innerDec{
         width: 80%;
+        gap: 0px;
     }
     .others_msg{
         margin-right: 20%;
@@ -223,6 +233,9 @@ body::-webkit-scrollbar-track{
         right: 10px;
     }
     .newMessage{
-        margin-left: -15px;
+        margin-left: 0px;
+    }
+    .send img,.sync  img{
+        width: 70%;
     }
 }
