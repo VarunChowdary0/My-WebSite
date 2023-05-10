@@ -82,7 +82,7 @@ def process():
     checkDict["Email"]=mail
     checkDict["username"]=usrnme
     check=connectToDB.connect()
-    res=check.find(checkDict)
+    res=check.find_one(checkDict)
     if(res is None):
         DataFormat["FirstName"]=fname
         DataFormat["LastName"]=lname
@@ -99,7 +99,7 @@ def process():
         #print(DataFormat)
         return render_template('signIN.html',flash="")
     else:
-        print("Already exists")
+        #print("->",res)
         return render_template("dupicate.html")
 @app.route('/signin')
 def signin():
